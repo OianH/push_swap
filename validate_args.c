@@ -6,7 +6,7 @@
 /*   By: oiahidal <oiahidal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:50:23 by oiahidal          #+#    #+#             */
-/*   Updated: 2024/11/18 18:29:54 by oiahidal         ###   ########.fr       */
+/*   Updated: 2024/11/18 18:54:49 by oiahidal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,15 @@ int validate_sign(char *str)
 		if (str[i] == '-' || str[i] == '+')
 		{
 			i++;
-			if (!(ft_isdigit))
+			if (!(ft_isdigit(str[i])))
 				return (0);
 		}
 		i++;
 	}
 	return (1);
+}
+
+int validate_numbers(int **nbrs)
+{
+	
 }
