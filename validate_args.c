@@ -6,64 +6,72 @@
 /*   By: oiahidal <oiahidal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:50:23 by oiahidal          #+#    #+#             */
-/*   Updated: 2024/12/05 19:15:30 by oiahidal         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:52:39 by oiahidal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	validate_str(char *str)
+int	validate_str(char **args)
 {
 	int	i;
-	int	symbol;
-	int	sign;
+	int	j;
 
 	i = 0;
-	symbol = 0;
-	sign = 0;
-	while (str[i])
+	j = 0;
+	while (args[i])
 	{
-		if ((str[i] >= 33 && str[i] <= 47 && str[i] != '-' && str[i] != '+')
-			|| (str[i] >= 58 && str[i] <= 127
-				&& str[i] != '-' && str[i] != '+'))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	validate_sign(char *str)
-{
-	int	i;
-	int	sign;
-
-	i = 0;
-	sign = 0;
-	while (str[i])
-	{
-		if (str[i] == '-' || str[i] == '+')
+		while (args[i][j])
 		{
-			i++;
-			if (!(ft_isdigit(str[i])))
+			if ((args[i][j] >= 33 && ((args[i][j] <= 47
+					&& (args[i][j] != '-' && args[i][j] != '+')
+				|| (args[i][j] >= 58 && args[i][j] <= 127
+				&& args[i][j] != '-' && args[i][j] != '+')))))
 				return (1);
+			j++;
 		}
 		i++;
 	}
 	return (0);
 }
 
-int	validate_numbers(char **nbrs)
+int	validate_sign(char **args)
+{
+	int	i;
+	int	j;
+	int	sign;
+
+	i = 0;
+	j = 0;
+	while (args[i])
+	{
+		while (args[i][j])
+		{
+			if (args[i][j] == '-' || (args[i][j] == '+'))
+			{
+				j++;
+				if (!ft_isdigit(args[i][j]))
+					return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	validate_numbers(char **args)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 1;
-	while (nbrs[i])
+	while (args[i])
 	{
-		while (nbrs[j])
+		while (args[j])
 		{
-			if (!ft_strcmp(nbrs[i], nbrs[j]))
+			if (!ft_strcmp(args[i], args[j]))
 				j++;
 			else
 				return (1);
@@ -74,61 +82,48 @@ int	validate_numbers(char **nbrs)
 	return (0);
 }
 
-int	validate_new_args(int argc, char **args)
+int	validate_args_count(int argc, char **args)
 {
 	int	i;
-	char	**new_args;
 
 	i = 0;
-	if (argc == 2)
-		new_args = ft_split(args[1])
-	else
-		new_args = args[1];
-	while (new_args[i])
+	while (args[i])
 		i++;
-	if (i == 1)
+	if (i <= 1)
 		return (1);
 	else
 		return (0);
-	
 }
 
-int	validate_args(int argc, char **argv)
+int	validate_args(char **args)
 {
 	int		i;
 	int		j;
 	int		errors;
-	char	**new_args;
 
 	i = 0;
 	errors = 0;
-	if (argc == 2)
-		new_args = ft_split(argv[1]);
-	else if (argc < 2)
+	if (validate_new_args(args))
 		// error args insuficientes
-	else
-		new_args = argv;
-	if (validate_new_args(new_args))
-		// error args insuficientes
-	while (new_args[i])
+	while (args[i])
 	{
-		while (new_args[j])
+		while (args[j])
 		{
-			if (validate_str(new_args[j]))
+			if (validate_str(args[j]))
 				errors = 1;
-			i++;
+			j++;
 		}
-		while (new_args[j])
+		while (args[j])
 		{
-			if (validate_sign(new_args[j]))
+			if (validate_sign(args[j]))
 				errors = 2;
-			i++;
+			j++;
 		}
-		while (new_args[j])
+		while (args[j])
 		{
-			if (validate_numbers(new_args[j]))
+			if (validate_numbers(args[j]))
 				errors = 3;
-			i++;
+			j++;
 		}
 		j = 0;
 		i++;
