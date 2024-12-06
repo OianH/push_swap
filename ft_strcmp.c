@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oiahidal <oiahidal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 15:51:16 by oiahidal          #+#    #+#             */
-/*   Updated: 2024/12/06 16:41:55 by oiahidal         ###   ########.fr       */
+/*   Created: 2024/03/04 12:25:30 by oiahidal          #+#    #+#             */
+/*   Updated: 2024/11/21 16:31:09 by oiahidal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-	int				error;
+	unsigned int	i;
+	unsigned int	a;
+	unsigned int	b;
+	size_t			n;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || argc == 2 && !argv[1][0])
-		return (1);
-	else if (argc == 1)
-		return (1);
-	error = validate_args(argv);
-	if (error)
-		errors(error)
-	// inicializar stack
-	
-    return (0);
+	i = 0;
+	a = ft_strlen(s1);
+	b = ft_strlen(s2);
+	if (a > b)
+		n = a;
+	else
+		n = b;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+		{
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }
