@@ -6,7 +6,7 @@
 /*   By: oiahidal <oiahidal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:50:23 by oiahidal          #+#    #+#             */
-/*   Updated: 2024/12/06 16:48:17 by oiahidal         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:44:48 by oiahidal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	validate_args_count(char **args)
 
 int	validate_args(char **args)
 {
-	if (validate_new_args(args))
+	if (validate_args_count(args))
 		return (-1);
 	if (validate_str(args))
 		return (1);

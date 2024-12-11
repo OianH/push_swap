@@ -6,11 +6,11 @@
 /*   By: oiahidal <oiahidal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:31:07 by oiahidal          #+#    #+#             */
-/*   Updated: 2024/12/06 16:36:58 by oiahidal         ###   ########.fr       */
+/*   Updated: 2024/12/07 12:52:31 by oiahidal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_free_args(char **args)
+void	free_args(char **args)
 {
 	int	i;
 	int	j;
@@ -28,3 +28,4 @@ void	ft_free_args(char **args)
 	}
 	free(args);
 }
+
