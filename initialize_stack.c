@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_stack.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oiahidal <oiahidal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:39:31 by oiahidal          #+#    #+#             */
-/*   Updated: 2024/12/07 10:43:23 by oiahidal         ###   ########.fr       */
+/*   Updated: 2025/01/16 07:16:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,14 @@ void	add_node(t_stack_node **stack, long nbr)
 
 void	initialize_stack(t_stack_node **stack, char **args)
 {
+	int	i;
 
+	i = 0;
+	while (args[i])
+	{
+		if (!ft_isdigit(args[i]))
+			exit_error();
+		add_node(stack, ft_atoi(args[i]));
+		i++;
+	}
 }

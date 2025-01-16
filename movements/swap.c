@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oiahidal <oiahidal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:13:04 by oiahidal          #+#    #+#             */
-/*   Updated: 2024/11/15 03:34:05 by oiahidal         ###   ########.fr       */
+/*   Updated: 2025/01/16 07:14:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,10 @@ void	sb(t_stack_node *b)
 		b->prev->next = temp;
 	b->prev = temp;
 	b = temp;
+}
+
+void	ss(t_stack_node *a, t_stack_node *b)
+{
+	sa(a);
+	sb(b);
 }
