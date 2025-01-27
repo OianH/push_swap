@@ -6,43 +6,53 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:13:18 by oiahidal          #+#    #+#             */
-/*   Updated: 2025/01/16 07:14:05 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/26 19:09:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ra(t_stack_node *a)
+void	ra(t_stack_node **a)
 {
     t_stack_node	*tmp;
+    t_stack_node	*head;
 
-    tmp = a;
+    if (!a || !*a || !(*a)->next)
+        return;
+    head = *a;
+    tmp = *a;
     while (tmp->next)
     {
         tmp = tmp->next;
     }
-    tmp->next = a;
-    a->prev = tmp;
-    a->next->prev = NULL;
-    a->next = NULL;
+    *a = head->next;
+    (*a)->prev = NULL;
+    head->next = NULL;
+    head->prev = tmp;
+    tmp->next = head;
 }
 
-void	rb(t_stack_node *b)
+void	rb(t_stack_node **b)
 {
     t_stack_node	*tmp;
+    t_stack_node	*head;
 
-    tmp = b;
+    if (!b || !*b || !(*b)->next)
+        return;
+    head = *b;
+    tmp = *b;
     while (tmp->next)
     {
         tmp = tmp->next;
     }
-    tmp->next = b;
-    b->prev = tmp;
-    b->next->prev = NULL;
-    b->next = NULL;
+    *b = head->next;
+    (*b)->prev = NULL;
+    head->next = NULL;
+    head->prev = tmp;
+    tmp->next = head;
 }
 
-void	rr(t_stack_node *a, t_stack_node *b)
+void	rr(t_stack_node **a, t_stack_node **b)
 {
     ra(a);
     rb(b);

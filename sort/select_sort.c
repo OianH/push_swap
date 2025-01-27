@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   select_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 15:51:16 by oiahidal          #+#    #+#             */
-/*   Updated: 2025/01/26 19:13:09 by marvin           ###   ########.fr       */
+/*   Created: 2025/01/22 16:13:24 by oiahidal          #+#    #+#             */
+/*   Updated: 2025/01/26 19:12:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void    select_sort(int argc, char **args, t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-	int				error;
-	char			**new_args;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || argc == 2 && !argv[1][0])
-		return (1);
-	else if (argc == 1)
-		return (1);
+	initialize_stack(*a, args);
+	initialize_stack(*b, NULL);
 	if (argc == 2)
-		new_args = split(argv[1]);
+		sort_2(*a);
+	else if (argc == 3)
+		sort_3(*a);
+	else if (argc == 4)
+		sort_4(*a, *b);
+	else if (argc == 5)
+		sort_5(*a, *b);
 	else
-		new_args = argv;
-	error = validate_args(argv);
-	if (error)
-		errors_management(error, new_args);
-	initialize_stack(a, new_args);
-    return (0);
+		big_sort(*a, *b);
 }
